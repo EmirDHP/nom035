@@ -48,14 +48,14 @@
                         <li class="active"><a href="./">Inicio</a></li>
                         <li class="drop-down"><a href="">Acerca de nostros</a>
                             <ul>
-                                <li><a href="#aboutus">¿Quiénes somos?</a></li>
-                                <li><a href="#services">Políticas</a></li>
-                                <li><a href="#why-us">Seguridad</a></li>
-                                <li><a href="#forma">Formación</a></li>
-                                <li><a href="#features">Comunicacion</a></li>
-                                <li><a href="#call-to-action">Reconocimientos</a></li>
-                                <li><a href="#eventos">Eventos</a></li>
-                                <li><a href="#autoevaluacion">Autoevaluación</a></li>
+                                <li><a href="./#aboutus">¿Quiénes somos?</a></li>
+                                <li><a href="./#services">Políticas</a></li>
+                                <li><a href="./#why-us">Seguridad</a></li>
+                                <li><a href="./#forma">Formación</a></li>
+                                <li><a href="./#features">Comunicacion</a></li>
+                                <li><a href="./#call-to-action">Reconocimientos</a></li>
+                                <li><a href="./#eventos">Eventos</a></li>
+                                <li><a href="./#autoevaluacion">Autoevaluación</a></li>
                             </ul>
                         </li>
                         <li><a href="calendario.php">Calendario</a></li>
@@ -65,17 +65,17 @@
             <?php
                     } else {
             ?>
-                <li class="active"><a href="#intro">Inicio</a></li>
+                <li class="active"><a href="./">Inicio</a></li>
                 <li class="drop-down"><a href="">Acerca de nostros</a>
                     <ul>
-                        <li><a href="#aboutus">¿Quiénes somos?</a></li>
-                        <li><a href="#services">Políticas</a></li>
-                        <li><a href="#why-us">Seguridad</a></li>
-                        <li><a href="#forma">Formación</a></li>
-                        <li><a href="#features">Comunicacion</a></li>
-                        <li><a href="#call-to-action">Reconocimientos</a></li>
-                        <li><a href="#eventos">Eventos</a></li>
-                        <li><a href="#autoevaluacion">Autoevaluación</a></li>
+                        <li><a href="./#aboutus">¿Quiénes somos?</a></li>
+                        <li><a href="./#services">Políticas</a></li>
+                        <li><a href="./#why-us">Seguridad</a></li>
+                        <li><a href="./#forma">Formación</a></li>
+                        <li><a href="./#features">Comunicacion</a></li>
+                        <li><a href="./#call-to-action">Reconocimientos</a></li>
+                        <li><a href="./#eventos">Eventos</a></li>
+                        <li><a href="./#autoevaluacion">Autoevaluación</a></li>
                     </ul>
                 </li>
                 <li><a href="calendario.php">Calendario</a></li>
