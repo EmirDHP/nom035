@@ -407,7 +407,9 @@
                     <h5 class="card-text">Cartas de Procesos</h5>
                     <hr>
                     <h5 class="card-text">Plan Anual de Capacitación</h5>
+                    <hr>
                     <h5 class="card-text">Planes de Educación (ITEA, bachillerato, educación superior, maestrías, etc.)</h5>
+                    <hr>
                     <h5 class="card-text">Planes de Crecimiento Laboraln</h5>
                   </div>
                 </div>
