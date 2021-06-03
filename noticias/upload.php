@@ -13,7 +13,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <head>
     <meta charset="utf-8">
-    <title>NOM035 - Subir Foto</title>
+    <title>NOM035 - Subir Noticia</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -64,7 +64,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <li><a href="../#autoevaluacion">Autoevaluación</a></li>
                         </ul>
                     </li>
-                    <li><a href="../noticias/noticias.php">Calendario</a></li>
+                    <li><a href="../noticias/noticias.php">Noticias</a></li>
                     <li><a href="../calendario.php">Calendario</a></li>
                     <li><a href="../images/imagenes.php">Fotos</a></li>
                     <li class="drop-down">
@@ -94,20 +94,21 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <?php
         $msg = "";
         if (isset($_POST['upload'])) {
-            $target = "../images/img/" . basename($_FILES['image']['name']);
+            $target = "../noticias/imagenes/" . basename($_FILES['image']['name']);
 
             $db = mysqli_connect("localhost", "root", "", "bbb_nom035");
 
             $image = $_FILES['image']['name'];
             $text = $_POST['text'];
+            $title = $_POST['title'];
 
-            $sql = "INSERT INTO tbl_images (image, text) VALUES ('$image', '$text')";
+            $sql = "INSERT INTO tbl_noticias (image, title, text) VALUES ('$image', '$title', '$text')";
             mysqli_query($db, $sql);
 
             if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                $msg = "Image uploaled successfully!";
+                $msg = "La noticia se ha subido con exito.";
             } else {
-                $msg = "There was a problem uploading the image";
+                $msg = "Hubo un problema para subir la noticia.";
             }
         }
         ?>
@@ -127,23 +128,36 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="cwp4-two row">
                         <div class="cwp4-text col-lg-12">
                             <header class="section-header">
-                                <h3 class="section-title">Subir nueva foto</h3>
+                                <h3 class="section-title">Noticia nueva</h3>
                             </header>
                             <hr>
-                            <form method="post" action="../images/upload.php" enctype="multipart/form-data">
-                                <input type="hidden" name="size" value="1000000">
-                                <div>
-                                    <input type="file" name="image">
+
+                            <form method="post" action="../noticias/upload.php" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Título</label>
+                                        <input type="text" name="title" class="form-control" id="inputEmail4" placeholder="Título de la noticia">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Imagen</label>
+                                        <input type="hidden" name="size" value="1000000">
+                                        <div>
+                                            <input type="file" name="image">
+                                        </div>
+                                    </div>
                                 </div>
-                                <br>
-                                <div>
-                                    <textarea name="text" cols="50" rows="6" placeholder="Escribe aquí una descripción de la foto"></textarea>
+                                <label for="inputPassword4">Contenido de la noticia</label>
+                                <div class="row">
+                                    <div class="col">
+                                        <textarea name="text" cols="100" rows="4" placeholder="Escribe aquí la noticia"></textarea>
+                                    </div>
                                 </div>
                                 <div>
                                     <input type="submit" name="upload" value="Subir" class="btn btn-small btn-success mt-sm-5 mt-4">
                                     <a class="btn btn-small btn-danger mt-sm-5 mt-4" href="../">Cancel</a>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>

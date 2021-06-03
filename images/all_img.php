@@ -64,6 +64,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <li><a href="../#autoevaluacion">Autoevaluación</a></li>
                         </ul>
                     </li>
+                    <li><a href="../noticias/noticias.php">Noticias</a></li>
                     <li><a href="../calendario.php">Calendario</a></li>
                     <li><a href="../images/imagenes.php">Fotos</a></li>
                     <li class="drop-down">
@@ -74,6 +75,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                             <li><a href="../images/upload.php">Subir Foto</a></li>
                             <li><a href="../images/all_img.php">Control de fotos</a></li>
+                            <li><a href="../noticias/upload.php">Subir Noticia</a></li>
+                            <li><a href="../noticias/control.php">Control de noticias</a></li>
                             <li><a href="../account/reset_password.php">Cambiar contraseña</a></li>
                             <li><a href="../account/logout.php">Cerrar sesión</a></li>
                         </ul>
@@ -97,7 +100,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
             $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
 
-            $consultaSQL = "SELECT * FROM tbl_images ORDER BY fcreate ASC;";
+            $consultaSQL = "SELECT * FROM tbl_images ORDER BY fcreate DESC;";
 
             $sentencia = $conexion->prepare($consultaSQL);
             $sentencia->execute();

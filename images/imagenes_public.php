@@ -54,6 +54,7 @@
                             <li><a href="../#autoevaluacion">Autoevaluación</a></li>
                         </ul>
                     </li>
+                    <li><a href="../noticias/noticias.php">Noticias</a></li>
                     <li><a href="../calendario.php">Calendario</a></li>
                     <li><a href="../images/imagenes_public.php">Fotos</a></li>
                     <li><a href="../account/login.php">Iniciar Sesión</a></li>

@@ -78,6 +78,7 @@
                         <li><a href="./#autoevaluacion">Autoevaluación</a></li>
                     </ul>
                 </li>
+                <li><a href="noticias/noticias.php">Noticias</a></li>
                 <li><a href="calendario.php">Calendario</a></li>
                 <li><a href="images/imagenes.php">Fotos</a></li>
                 <li class="drop-down">
@@ -94,6 +95,8 @@
                         ?>
                                 <li><a href="images/upload.php">Subir Foto</a></li>
                                 <li><a href="images/all_img.php">Control de fotos</a></li>
+                                <li><a href="noticias/upload.php">Subir Noticia</a></li>
+                                <li><a href="noticias/control.php">Control de noticias</a></li>
                                 <li><a href="account/reset_password.php">Cambiar contraseña</a></li>
                                 <li><a href="account/logout.php">Cerrar sesión</a></li>
                             <?php

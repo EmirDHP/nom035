@@ -13,7 +13,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <head>
     <meta charset="utf-8">
-    <title>NOM035 - Subir Foto</title>
+    <title>NOM-035 - Noticias</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -64,7 +64,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <li><a href="../#autoevaluacion">Autoevaluación</a></li>
                         </ul>
                     </li>
-                    <li><a href="../noticias/noticias.php">Calendario</a></li>
+                    <li><a href="../noticias/noticias.php">Noticias</a></li>
                     <li><a href="../calendario.php">Calendario</a></li>
                     <li><a href="../images/imagenes.php">Fotos</a></li>
                     <li class="drop-down">
@@ -92,23 +92,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
         <!-- Images -->
         <?php
-        $msg = "";
-        if (isset($_POST['upload'])) {
-            $target = "../images/img/" . basename($_FILES['image']['name']);
 
-            $db = mysqli_connect("localhost", "root", "", "bbb_nom035");
+        $error = false;
+        $config = include '../config.php';
 
-            $image = $_FILES['image']['name'];
-            $text = $_POST['text'];
+        try {
+            $dsn = 'mysql:host=' . $config['db']['host'] . ';dbname=' . $config['db']['name'];
+            $conexion = new PDO($dsn, $config['db']['user'], $config['db']['pass'], $config['db']['options']);
 
-            $sql = "INSERT INTO tbl_images (image, text) VALUES ('$image', '$text')";
-            mysqli_query($db, $sql);
+            $consultaSQL = "SELECT * FROM tbl_noticias ORDER BY fcreate DESC;";
 
-            if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
-                $msg = "Image uploaled successfully!";
-            } else {
-                $msg = "There was a problem uploading the image";
-            }
+            $sentencia = $conexion->prepare($consultaSQL);
+            $sentencia->execute();
+
+            $noticia = $sentencia->fetchAll();
+        } catch (PDOException $error) {
+            $error = $error->getMessage();
         }
         ?>
 
@@ -121,29 +120,45 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             }
         </style>
         <section id="portfolio" class="section-bg">
-
-            <div id="content-with-photo4-block">
+            <div>
                 <div class="container">
                     <div class="cwp4-two row">
                         <div class="cwp4-text col-lg-12">
                             <header class="section-header">
-                                <h3 class="section-title">Subir nueva foto</h3>
+                                <h3 class="section-title">Noticias subidas</h3>
                             </header>
                             <hr>
-                            <form method="post" action="../images/upload.php" enctype="multipart/form-data">
-                                <input type="hidden" name="size" value="1000000">
-                                <div>
-                                    <input type="file" name="image">
-                                </div>
-                                <br>
-                                <div>
-                                    <textarea name="text" cols="50" rows="6" placeholder="Escribe aquí una descripción de la foto"></textarea>
-                                </div>
-                                <div>
-                                    <input type="submit" name="upload" value="Subir" class="btn btn-small btn-success mt-sm-5 mt-4">
-                                    <a class="btn btn-small btn-danger mt-sm-5 mt-4" href="../">Cancel</a>
-                                </div>
-                            </form>
+                            <div>
+                                <a href="../" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Regresar</a>
+                            </div><br>
+                            <table class="table table-hover">
+                                <thead style="background-color:#002395; color:white;">
+                                    <tr>
+                                        <th scope="col">Titulo</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Contenido de la noticia</th>
+                                        <th scope="col">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if ($noticia && $sentencia->rowCount() > 0) {
+                                        foreach ($noticia as $fila) {
+                                    ?>
+                                            <tr>
+                                                <td><?php echo ($fila["title"]); ?></td>
+                                                <td><?php echo ($fila["image"]); ?></td>
+                                                <td><?php echo ($fila["text"]); ?></td>
+                                                <td>
+                                                    <a href="../noticias/delete.php?id=<?php echo $fila['id']; ?>?" class="btn btn-danger btn-sm">Eliminar</a>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
