@@ -11,7 +11,7 @@
  Target Server Version : 100418
  File Encoding         : 65001
 
- Date: 27/05/2021 11:57:32
+ Date: 03/06/2021 10:09:35
 */
 
 SET NAMES utf8mb4;
@@ -38,6 +38,26 @@ INSERT INTO `tbl_images` VALUES (3, 'testimonial-2.jpg', 'Isabela Montes Juárez
 INSERT INTO `tbl_images` VALUES (4, 'testimonial-1.jpg', 'Samuel Lopez Quintillo', '2021-05-26 12:47:47.438992');
 INSERT INTO `tbl_images` VALUES (5, 'homero.jpg', 'Homero Francisco Resendiz Garcia', '2021-05-26 12:48:17.255760');
 INSERT INTO `tbl_images` VALUES (6, 'team-3.jpg', 'Alberto Garcia Gómez', '2021-05-26 12:49:08.403139');
+
+-- ----------------------------
+-- Table structure for tbl_noticias
+-- ----------------------------
+DROP TABLE IF EXISTS `tbl_noticias`;
+CREATE TABLE `tbl_noticias`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `image` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `text` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `fcreate` datetime NULL DEFAULT current_timestamp,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = COMPACT;
+
+-- ----------------------------
+-- Records of tbl_noticias
+-- ----------------------------
+INSERT INTO `tbl_noticias` VALUES (2, 'Lorem Ipsum', '3 - Copy.JPG', 'Etiam fermentum odio ac iaculis semper. In dictum risus porta dapibus ornare. Praesent tincidunt elit ultricies, semper libero sed, consectetur turpis. Phasellus quam erat, eleifend nec egestas in, euismod in orci. Donec tellus lorem, bibendum ut nunc ac, accumsan varius velit. Duis dictum metus erat, iaculis sagittis nulla porttitor vel. Proin eleifend, lectus sed auctor sollicitudin, nisi diam lobortis mi, id rhoncus est lorem quis arcu. Aliquam consectetur ultrices erat eu imperdiet.', '2021-06-03 08:43:23');
+INSERT INTO `tbl_noticias` VALUES (3, 'Loesu Toprsiu', 'Picture 007.jpg', 'Proin elementum sodales euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer aliquet tortor non eros condimentum, nec aliquet felis sollicitudin. Morbi placerat mollis felis, ut gravida augue tincidunt a. Maecenas sit amet euismod ligula. Sed a augue vel lectus rutrum porta. Phasellus hendrerit felis dolor, quis convallis nisi sodales ut. Duis gravida commodo congue.', '2021-06-03 08:44:29');
+INSERT INTO `tbl_noticias` VALUES (4, 'BBB Industries', 'bbbbanner.jpg', 'Proin elementum sodales euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer aliquet tortor non eros condimentum, nec aliquet felis sollicitudin. Morbi placerat mollis felis, ut gravida augue tincidunt a.', '2021-06-03 08:46:16');
 
 -- ----------------------------
 -- Table structure for tbl_roles
@@ -77,7 +97,7 @@ CREATE TABLE `tbl_users`  (
 -- Records of tbl_users
 -- ----------------------------
 INSERT INTO `tbl_users` VALUES (1, 'emir', 'Emir Hernandez', '$2y$10$p5LeJerLXcSx/5CeBPWupOeDFM5yPHzZjjSxqqDLY7EpKY5PZGUaO', 8, '2021-05-05 13:55:07');
-INSERT INTO `tbl_users` VALUES (2, 'homero', 'Homero Resendiz', '$2y$10$5GeNFxsVEIGokGQnasu2X.cgH0FNuoWebAdbe1tw0UHznViV.QUGa', 8, '2021-05-05 13:55:23');
+INSERT INTO `tbl_users` VALUES (2, 'homero', 'Homero Resendiz', '$2y$10$5GeNFxsVEIGokGQnasu2X.cgH0FNuoWebAdbe1tw0UHznViV.QUGa', 9, '2021-05-05 13:55:23');
 INSERT INTO `tbl_users` VALUES (3, 'david', 'David Reyes', '$2y$10$5GeNFxsVEIGokGQnasu2X.cgH0FNuoWebAdbe1tw0UHznViV.QUGa', 8, '2021-05-05 14:02:37');
 INSERT INTO `tbl_users` VALUES (4, 'cesar', 'Cesar', '$2y$10$5GeNFxsVEIGokGQnasu2X.cgH0FNuoWebAdbe1tw0UHznViV.QUGa', 8, '2021-05-25 09:17:00');
 
